@@ -4,10 +4,12 @@ import Banner from "../components/Banner";
 import Header from "../components/Header";
 import requests from "../requests";
 
+import getBingSourceEntries from "../lib/BingSource";
+
 export default function Home({
+  bingEntries,
   trending,
   action,
-  netflix,
   topRated,
   horror,
   comedy,
@@ -27,16 +29,16 @@ export default function Home({
       </Head>
 
       <Header />
-      <Banner movies={netflix.results} />
+      <Banner entries={ bingEntries } />
 
       <div className="">
         <Row title="Trending" movies={trending.results} big={true} />
-        <Row title="Action movies" movies={action.results} />
         <Row title="Top rated" movies={topRated.results} />
-        <Row title="Horror " movies={horror.results} />
-        <Row title="Comedy" movies={comedy.results} />
-        <Row title="Romance" movies={romance.results} />
+        <Row title="Action movies" movies={action.results} />
         <Row title="Documentaries" movies={documentary.results} />
+        <Row title="Comedy" movies={comedy.results} />
+        <Row title="Horror " movies={horror.results} />
+        <Row title="Romance" movies={romance.results} />
       </div>
     </div>
   );
@@ -62,7 +64,19 @@ export async function getServerSideProps(context) {
     fetch(`https://api.themoviedb.org/3${requests.fetchRomanceMovies}`),
     fetch(`https://api.themoviedb.org/3${requests.fetchDocumentaries}`),
   ]);
+
+  const tv3 = {
+    id : "TV3 directe",
+    backdrop_path : "https://www.hlsplayer.org/play?url=https://directes-tv-int.ccma.cat/live-origin/canal324-hls/master.m3u8",
+    poster_path : "https://img.ccma.cat/multimedia/jpg/5/8/1483009076885.jpg", 
+    original_name : "TV3 directe", 
+    title : "TV3 directe", 
+    overview : ""
+  };
+  
+
   const [
+    bingEntries,
     trending,
     action,
     netflix,
@@ -72,6 +86,7 @@ export async function getServerSideProps(context) {
     romance,
     documentary,
   ] = await Promise.all([
+    getBingSourceEntries(),
     trendingRes.json(),
     actionRes.json(),
     netflixRes.json(),
@@ -81,8 +96,10 @@ export async function getServerSideProps(context) {
     romanceRes.json(),
     documentaryRes.json(),
   ]);
+
   return {
     props: {
+      bingEntries,
       trending,
       action,
       netflix,
@@ -90,7 +107,7 @@ export async function getServerSideProps(context) {
       horror,
       comedy,
       romance,
-      documentary,
+      documentary
     },
   };
 }

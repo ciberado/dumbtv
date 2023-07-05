@@ -5,29 +5,21 @@ import Image from "next/image";
 
 SwiperCore.use([Autoplay]);
 
-export default function Banner({ movies }) {
+export default function Banner({ entries }) {
   return (
     <Swiper
       autoplay={{
-        delay: 5000,
+        delay: 15000,
         disableOnInteraction: false,
       }}
-      className="relative md:h-[60vh] h-[50vh]"
+      className="relative md:h-[80vh] h-[50vh]"
     >
-      {movies
-        ?.filter((m) => {
-          if (m.backdrop_path) {
-            return m;
-          }
-        })
-        .map((m) => (
-          <SwiperSlide key={m.id} className="">
+      {entries?.map((currentEntry) => (
+          <SwiperSlide key={currentEntry.id} className="">
             <Image
               layout="fill"
               className="absolute w-full h-full object-cover"
-              src={`https://image.tmdb.org/t/p/original${
-                m.backdrop_path || m.poster_path
-              }`}
+              src={ currentEntry.imageUrl}
               alt="banner__image"
               loading="eager"
             />
@@ -39,7 +31,7 @@ export default function Banner({ movies }) {
                 transition={{ delay: 0.2, duration: 0.5 }}
                 className="text-white font-semibold text-2xl sm:text-5xl"
               >
-                {m?.original_name || m.name}
+                { currentEntry.title}
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -47,7 +39,7 @@ export default function Banner({ movies }) {
                 transition={{ delay: 0.4, duration: 0.5 }}
                 className="my-3 max-w-2xl text-sm sm:text-base line-clamp-3"
               >
-                {m?.overview}
+                {currentEntry.description}
               </motion.p>
             </div>
           </SwiperSlide>

@@ -7,6 +7,7 @@ module.exports = {
       "upload.wikimedia.org",
       "lh3.googleusercontent.com",
       "www.w3schools.com",
+      "www.bing.com"
     ],
   },
 };
