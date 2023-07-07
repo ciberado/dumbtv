@@ -4,10 +4,14 @@ import Banner from "../components/Banner";
 import Header from "../components/Header";
 import requests from "../requests";
 
+import HLSRow from "../components/HLSRow";
+
 import getBingSourceEntries from "../lib/BingSource";
+import getLifeTVSourceEntries from "../lib/LiveTVSource"
 
 export default function Home({
   bingEntries,
+  liveTVEntries,
   trending,
   action,
   topRated,
@@ -32,6 +36,7 @@ export default function Home({
       <Banner entries={ bingEntries } />
 
       <div className="">
+        <HLSRow title="Live TV" entries={liveTVEntries} />
         <Row title="Trending" movies={trending.results} big={true} />
         <Row title="Top rated" movies={topRated.results} />
         <Row title="Action movies" movies={action.results} />
@@ -65,18 +70,9 @@ export async function getServerSideProps(context) {
     fetch(`https://api.themoviedb.org/3${requests.fetchDocumentaries}`),
   ]);
 
-  const tv3 = {
-    id : "TV3 directe",
-    backdrop_path : "https://www.hlsplayer.org/play?url=https://directes-tv-int.ccma.cat/live-origin/canal324-hls/master.m3u8",
-    poster_path : "https://img.ccma.cat/multimedia/jpg/5/8/1483009076885.jpg", 
-    original_name : "TV3 directe", 
-    title : "TV3 directe", 
-    overview : ""
-  };
-  
-
   const [
     bingEntries,
+    liveTVEntries,
     trending,
     action,
     netflix,
@@ -87,6 +83,7 @@ export async function getServerSideProps(context) {
     documentary,
   ] = await Promise.all([
     getBingSourceEntries(),
+    getLifeTVSourceEntries(),
     trendingRes.json(),
     actionRes.json(),
     netflixRes.json(),
@@ -97,9 +94,12 @@ export async function getServerSideProps(context) {
     documentaryRes.json(),
   ]);
 
+console.log(trending)
+
   return {
     props: {
       bingEntries,
+      liveTVEntries,
       trending,
       action,
       netflix,
