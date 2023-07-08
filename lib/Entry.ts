@@ -4,6 +4,8 @@ export interface Entry {
 
     title : string;
 
+    originalTitle : string;
+
     url : string;
 
     imageUrl : string;

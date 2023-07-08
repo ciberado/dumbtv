@@ -9,6 +9,8 @@ import HLSRow from "../components/HLSRow";
 import getBingSourceEntries from "../lib/BingSource";
 import getLifeTVSourceEntries from "../lib/LiveTVSource"
 
+import enrichAllEntriesWithLinks from "../lib/JustWatchAPI";
+
 export default function Home({
   bingEntries,
   liveTVEntries,
@@ -80,7 +82,7 @@ export async function getServerSideProps(context) {
     horror,
     comedy,
     romance,
-    documentary,
+    documentary
   ] = await Promise.all([
     getBingSourceEntries(),
     getLifeTVSourceEntries(),
@@ -94,7 +96,8 @@ export async function getServerSideProps(context) {
     documentaryRes.json(),
   ]);
 
-console.log(trending)
+  enrichAllEntriesWithLinks([trending.results, action.results, netflix.results, 
+    topRated.results, horror.results, comedy.results, romance.results, documentary.results]);
 
   return {
     props: {
