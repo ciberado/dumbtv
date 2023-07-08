@@ -1,0 +1,98 @@
+{
+    "adult": false,
+    "backdrop_path": "/7I6VUdPj6tQECNHdviJkUHD2u89.jpg",
+    "id": 603692,
+    "title": "John Wick 4",
+    "original_language": "en",
+    "original_title": "John Wick: Chapter 4",
+    "overview": "John Wick descubre un camino para derrotar a la Alta Mesa. Pero para poder ganar su libertad, Wick deberá enfrentarse a un nuevo rival con poderosas alianzas en todo el mundo, capaz de convertir a viejos amigos en enemigos.",
+    "poster_path": "/mj2Z9HnRSIEk3n7yVPoOY4Uzzfh.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+      28,
+      53,
+      80
+    ],
+    "popularity": 1386.243,
+    "release_date": "2023-03-22",
+    "video": false,
+    "vote_average": 7.859,
+    "vote_count": 3536,
+    "streamingLinks": {
+      "jw_entity_id": "tm475372",
+      "id": 475372,
+      "title": "John Wick 4",
+      "full_path": "/es/pelicula/john-wick-4",
+      "full_paths": {
+        "MOVIE_DETAIL_OVERVIEW": "/es/pelicula/john-wick-4"
+      },
+      "poster": "/poster/304471076/{profile}",
+      "poster_blur_hash": "TTGH3e0$=_XkIqS}MwoKjc%2s.Na",
+      "original_release_year": 2023,
+      "object_type": "movie",
+      "offers": [
+        {
+          "provider": "amazonprimevideo",
+          "url": "https://app.primevideo.com/watch?gti=amzn1.dv.gti.8cd0a1ab-b611-4ff8-be58-4cadbc153b46"
+        }
+      ],
+      "scoring": [
+        {
+          "provider_type": "tmdb:popularity",
+          "value": 1386.243
+        },
+        {
+          "provider_type": "jw:popular_180_day",
+          "value": 684.22
+        },
+        {
+          "provider_type": "jw:popular_1_day",
+          "value": 1174.39
+        },
+        {
+          "provider_type": "tmdb:score",
+          "value": 7.859
+        },
+        {
+          "provider_type": "jw:viral",
+          "value": 0.14
+        },
+        {
+          "provider_type": "tmdb:votes",
+          "value": 3535
+        },
+        {
+          "provider_type": "tmdb:id",
+          "value": 603692
+        },
+        {
+          "provider_type": "imdb:popularity",
+          "value": 309
+        },
+        {
+          "provider_type": "jw:popular_30_day",
+          "value": 1610.06
+        },
+        {
+          "provider_type": "imdb:multiplied",
+          "value": 1767877.8
+        },
+        {
+          "provider_type": "imdb:votes",
+          "value": 223782
+        },
+        {
+          "provider_type": "jw:popular_7_day",
+          "value": 1565.35
+        },
+        {
+          "provider_type": "imdb:score",
+          "value": 7.9
+        },
+        {
+          "provider_type": "jw:trending_7_day",
+          "value": 516.85
+        }
+      ]
+    }
+  }
