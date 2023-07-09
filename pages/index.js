@@ -38,11 +38,11 @@ export default function Home({
 
       <div className="">
         <HLSRow title="Live TV" entries={liveTVEntries} />
-        <Row title="Trending" movies={trending} big={true} />
-        <Row title="Top rated" movies={topRated} />
-        <Row title="Action movies" movies={action} />
-        <Row title="Documentaries" movies={documentary} />
-        <Row title="Comedy" movies={comedy} />
+        <Row title="Trending" shows={trending} big={true} />
+        <Row title="Top rated" shows={topRated} />
+        <Row title="Action movies" shows={action} />
+        <Row title="Documentaries" shows={documentary} />
+        <Row title="Comedy" shows={comedy} />
       </div>
     </div>
   );
