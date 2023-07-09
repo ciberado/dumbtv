@@ -9,7 +9,7 @@ import { useState } from "react";
 function Row({ title, shows, big }) {
   const [show, setShow] = useState(false);
   const [id, setId] = useState(null);
-console.log('***', JSON.stringify(shows), '******')
+
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="">
       <Modal show={show} setShow={setShow} id={id} />
