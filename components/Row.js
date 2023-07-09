@@ -34,8 +34,11 @@ function Row({ title, shows, big }) {
               <div className="flex space-x-3 items-center">
                 <motion.div
                   onClick={() => {
-                    setId(show.id);
-                    setShow(true);
+                    if (show?.streamingLinks?.offers) {
+                      document.location.href = show.streamingLinks.offers[0].url;
+                    }
+                    //setId(show.id);
+                    //setShow(true);
                   }}
                   whileTap={{ scale: 0.9 }}
                   className="bg-white w-12 h-12 flex rounded-full items-center justify-center"
