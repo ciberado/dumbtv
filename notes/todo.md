@@ -4,3 +4,10 @@
 [ ] https://cookpete.com/react-player/
 [x] https://www.npmjs.com/package/@keyv/sqlite
 [x] https://github.com/insiderser/AutoFullscreen
+
+## Data extraction
+
+
+### Google photos URL
+
+[...document.querySelectorAll('div[data-latest-bg]')].map(d => d.dataset.latestBg) 
