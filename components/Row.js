@@ -9,6 +9,7 @@ function Row({ title, entries, big }) {
       <div className="p-3 sm:p-5 flex gap-5 overflow-y-hidden overflow-x-scroll scrollbar-hide">
         {entries?.map((entry) => (
           <div
+            tabIndex="0"
             key={entry.id}
             className="group hover:sm:mx-5 hover:scale-105 relative transition-all duration-500"
             onClick={() => {
