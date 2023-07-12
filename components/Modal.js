@@ -76,6 +76,8 @@ function Modal({ show, setShow, id }) {
           url={`https://www.youtube.com/watch?v=${trailerId}-U`}
         />
 
+        <iframe src="https://www.netflix.com/watch/60023642"></iframe>
+
         <h1 className="py-3 font-semibold text-4xl">{movie.title}</h1>
         <p className="text-gray-300">{movie?.overview}</p>
         <div className="h-0.5 my-3 bg-gray-300" />

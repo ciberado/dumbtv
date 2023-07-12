@@ -1,3 +1,9 @@
+export interface Provider {
+    provider: string;
+    
+    url : string;
+}
+
 export interface Entry {
 
     id : string;
@@ -12,4 +18,9 @@ export interface Entry {
 
     description : string;
 
+    streamingLinks : {
+        providers : Provider[]
+    }
+
 }
+

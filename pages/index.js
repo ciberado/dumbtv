@@ -7,11 +7,12 @@ import HLSRow from "../components/HLSRow";
 
 import getBingSourceEntries from "../lib/BingSource";
 import getLifeTVSourceEntries from "../lib/LiveTVSource"
+import getDirectoryEntries from "../lib/DirectorySource";
 
 import getShowsEntries from "../lib/ShowSource";
 
 export default function Home({
-  bingEntries,
+  photoEntries,
   liveTVEntries,
   trending,
   action,
@@ -34,15 +35,15 @@ export default function Home({
       </Head>
 
       <Header />
-      <Banner entries={ bingEntries } />
+      <Banner entries={ photoEntries } />
 
       <div className="">
         <HLSRow title="Live TV" entries={liveTVEntries} />
-        <Row title="Trending" shows={trending} big={true} />
-        <Row title="Top rated" shows={topRated} />
-        <Row title="Action movies" shows={action} />
-        <Row title="Documentaries" shows={documentary} />
-        <Row title="Comedy" shows={comedy} />
+        <Row title="Trending" entries={trending} big={true} />
+        <Row title="Top rated" entries={topRated} />
+        <Row title="Action movies" entries={action} />
+        <Row title="Documentaries" entries={documentary} />
+        <Row title="Comedy" entries={comedy} />
       </div>
     </div>
   );
@@ -51,18 +52,23 @@ export default function Home({
 export async function getServerSideProps(context) {
   const [
     bingEntries,
+    menorcaEntries,
     liveTVEntries,
     showEntries 
   ] = await Promise.all([
       getBingSourceEntries(),
+      getDirectoryEntries('/mnt/c/Users/ciber/photos/menorca_2017/', 'file:///c:/Users/ciber/photos/menorca_2017'),
       getLifeTVSourceEntries(),
       getShowsEntries()
   ]);
 
+  console.log('*****')
+  console.log(JSON.stringify(showEntries.trending[6]));
+  console.log('*****')
 
  return {
     props: {
-      bingEntries,
+      photoEntries : bingEntries,
       liveTVEntries,
       trending : showEntries.trending,
       action: showEntries.action,

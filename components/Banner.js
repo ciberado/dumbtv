@@ -16,13 +16,8 @@ export default function Banner({ entries }) {
     >
       {entries?.map((currentEntry) => (
           <SwiperSlide key={currentEntry.id} className="">
-            <Image
-              layout="fill"
-              className="absolute w-full h-full object-cover"
-              src={ currentEntry.imageUrl}
-              alt="banner__image"
-              loading="eager"
-            />
+            <img src={currentEntry.imageUrl}/>
+            
             <div className="bg-gradient-to-t from-black absolute h-20 left-0 right-0 bottom-0"></div>
             <div className="absolute bottom-8 left-2 sm:left-8">
               <motion.h1
