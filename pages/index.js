@@ -1,3 +1,5 @@
+import React, { useEffect } from 'react';
+
 import Head from "next/head";
 import Row from "../components/Row";
 import Banner from "../components/Banner";
@@ -22,6 +24,30 @@ export default function Home({
   romance,
   documentary,
 }) {
+  React.useEffect(() => {
+      document.addEventListener('keyup', (e)=>{
+        if (document.activeElement === null) return;
+
+        if (e.key === 'ArrowLeft') {
+          document.activeElement.previousElementSibling?.focus();
+        } else if (e.key === 'ArrowRight') {
+          document.activeElement.nextElementSibling?.focus();
+        } else if (e.key === 'ArrowUp') {
+          const currentMotionRow = document.activeElement.parentElement.parentElement;
+          const prevMotionRow = currentMotionRow.previousElementSibling;
+          if (prevMotionRow === null) return;
+          const prevEntry = prevMotionRow.querySelector('.showEntry');
+          prevEntry?.focus();
+        } else if (e.key === 'ArrowDown') {
+          const currentMotionRow = document.activeElement.parentElement.parentElement;
+          const nextMotionRow = currentMotionRow.nextElementSibling;
+          if (nextMotionRow === null) return;
+          const nextEntry = nextMotionRow.querySelector('.showEntry');
+          nextEntry?.focus();
+        }
+      })
+  }, []);
+
   return (
     <div className="">
       <Head>
@@ -39,11 +65,11 @@ export default function Home({
 
       <div className="">
         <HLSRow title="Live TV" entries={liveTVEntries} />
-        <Row title="Trending" entries={trending} big={true} />
-        <Row title="Top rated" entries={topRated} />
-        <Row title="Action movies" entries={action} />
-        <Row title="Documentaries" entries={documentary} />
-        <Row title="Comedy" entries={comedy} />
+        <Row id="trending" title="Trending" entries={trending} big={true} />
+        <Row id="top" title="Top rated" entries={topRated} />
+        <Row id="action" title="Action movies" entries={action} />
+        <Row id="documentaries" title="Documentaries" entries={documentary} />
+        <Row id="comedy" title="Comedy" entries={comedy} />
       </div>
     </div>
   );
@@ -61,7 +87,7 @@ export async function getServerSideProps(context) {
       getLifeTVSourceEntries(),
       getShowsEntries()
   ]);
-  
+
  return {
     props: {
       photoEntries : bingEntries,
