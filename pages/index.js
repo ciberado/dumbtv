@@ -26,23 +26,31 @@ export default function Home({
 }) {
   React.useEffect(() => {
       document.addEventListener('keyup', (e)=>{
-        if (document.activeElement === null) return;
+        if (document.activeElement === null || document.activeElement.classList.contains('showEntry') === false) return;
 
         if (e.key === 'ArrowLeft') {
-          document.activeElement.previousElementSibling?.focus();
+          const previousEntry = document.activeElement.previousElementSibling;
+          if (previousEntry === null) return;
+          document.activeElement.classList.remove('activeEntry');
+          previousEntry.classList.add('activeEntry');
+          previousEntry.focus();
         } else if (e.key === 'ArrowRight') {
-          document.activeElement.nextElementSibling?.focus();
+          const nextEntry = document.activeElement.nextElementSibling;
+          if (nextEntry === null) return;
+          document.activeElement.classList.remove('activeEntry');
+          nextEntry.classList.add('activeEntry');
+          nextEntry.focus();
         } else if (e.key === 'ArrowUp') {
           const currentMotionRow = document.activeElement.parentElement.parentElement;
           const prevMotionRow = currentMotionRow.previousElementSibling;
           if (prevMotionRow === null) return;
-          const prevEntry = prevMotionRow.querySelector('.showEntry');
+          const prevEntry = prevMotionRow.querySelector('.activeEntry') || prevMotionRow.querySelector('.showEntry');
           prevEntry?.focus();
         } else if (e.key === 'ArrowDown') {
           const currentMotionRow = document.activeElement.parentElement.parentElement;
           const nextMotionRow = currentMotionRow.nextElementSibling;
           if (nextMotionRow === null) return;
-          const nextEntry = nextMotionRow.querySelector('.showEntry');
+          const nextEntry = nextMotionRow.querySelector('.activeEntry') || nextMotionRow.querySelector('.showEntry');
           nextEntry?.focus();
         }
       })
