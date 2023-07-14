@@ -61,11 +61,7 @@ export async function getServerSideProps(context) {
       getLifeTVSourceEntries(),
       getShowsEntries()
   ]);
-
-  console.log('*****')
-  console.log(JSON.stringify(showEntries.trending[6]));
-  console.log('*****')
-
+  
  return {
     props: {
       photoEntries : bingEntries,
