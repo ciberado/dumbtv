@@ -24,17 +24,7 @@ function Header() {
       style={{ backgroundColor: `${show ? "black" : "transparent"}` }}
       className="transition-all duration-1000 flex fixed z-50 top-0 w-full  items-center px-3"
     >
-      <div className="flex-1">
-        <Image
-          width={100}
-          height={50}
-          src="https://cdn.worldvectorlogo.com/logos/netflix-3.svg"
-        />
-      </div>
 
-      <div className="cursor-pointer mr-5">
-        <BsCollectionPlay className="text-white text-2xl" />
-      </div>
     </div>
   );
 }
