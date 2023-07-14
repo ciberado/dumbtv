@@ -17,8 +17,8 @@ function Row({ id, title, entries, big }) {
             onFocus={(e)=> e.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })}
             //onMouseEnter={(e) => e.target.focus({ focusVisible: true })}
             onClick={() => {
-              if (entry.providers.length > 0) {
-                window.open(entry.providers[0].url, 'watch')
+              if (entry.url) {
+                window.open(entry.url, 'watch')
               }
             }}
           >

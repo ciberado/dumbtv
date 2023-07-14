@@ -18,9 +18,7 @@ export interface Entry {
 
     description : string;
 
-    streamingLinks : {
-        providers : Provider[]
-    }
+    providers : Provider[]
 
 }
 

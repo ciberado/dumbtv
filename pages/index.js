@@ -5,8 +5,6 @@ import Row from "../components/Row";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 
-import HLSRow from "../components/HLSRow";
-
 import getBingSourceEntries from "../lib/BingSource";
 import getLifeTVSourceEntries from "../lib/LiveTVSource"
 import getDirectoryEntries from "../lib/DirectorySource";
@@ -72,7 +70,7 @@ export default function Home({
       <Banner entries={ photoEntries } />
 
       <div className="">
-        <HLSRow title="Live TV" entries={liveTVEntries} />
+        <Row title="Live TV" entries={liveTVEntries} />
         <Row id="trending" title="Trending" entries={trending} big={true} />
         <Row id="top" title="Top rated" entries={topRated} />
         <Row id="action" title="Action movies" entries={action} />
